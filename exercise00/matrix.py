@@ -39,4 +39,23 @@ class Matrix:
         for row in range(len(self.data)):
             # iterate through columns
             for column in range(len(self.data[0])):
-                self.data[row][column] = self.data[row][column]+ other.data[row][column]
+                self.data[row][column] = self.data[row][column] + other.data[row][column]
+
+    def sub(self, other):
+        """Add two Matrix"""
+        if not(self._check_add_sub(other)):
+            raise ValueError("Matrices must be the same size.")
+        # iterate through rows
+        for row in range(len(self.data)):
+            # iterate through columns
+            for column in range(len(self.data[0])):
+                self.data[row][column] = self.data[row][column] - other.data[row][column]
+
+    def scl(self, scalar):
+        """Multiply a matrix by a scalar"""
+        
+        # iterate through rows
+        for row in range(len(self.data)):
+            # iterate through columns
+            for column in range(len(self.data[0])):
+                self.data[row][column] = self.data[row][column] * scalar

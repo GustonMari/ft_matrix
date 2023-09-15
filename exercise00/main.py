@@ -1,6 +1,9 @@
 from vector import Vector
 from matrix import Matrix
-from utils import *
+import sys
+sys.path.append('../utils/')
+# Now you can import your module
+from utils import green, blue, yellow
 
 
 if __name__ == "__main__":
@@ -30,9 +33,21 @@ if __name__ == "__main__":
     matrice2 = Matrix([[7, 8, 9], [10, 11, 12]])
     matrice3 = Matrix([[13, 14, 15], [16, 17, 18], [19, 20, 21]])
     
-    yellow("A - Add two matrices together.")
+    yellow("\nA - Add two matrices together.\n")
     print(matrice1, "\n--------------")
     matrice1.add(matrice2)
     print(matrice1)
     # ! raise an ValueError
     # matrice1.add(matrice3)
+
+    yellow("\nB - Substract two matrices together.\n")
+    print(matrice1, "\n--------------")
+    matrice1.sub(matrice2)
+    print(matrice1)
+    # ! raise an ValueError
+    # matrice1.sub(matrice3)
+    
+    yellow("\nC - Multiply a matrices by a scalar.\n")
+    print(matrice1, "\n--------------")
+    matrice1.scl(2)
+    print(matrice1)

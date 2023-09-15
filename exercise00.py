@@ -44,5 +44,8 @@ class Matrix:
     def __str__(self):
         x = '\n'.join([''.join(['{:4}'.format(item) for item in row]) for row in self.data])
         return x
-    
+
+    def add(self, other)
+        """Add two Matrix"""
+        
 

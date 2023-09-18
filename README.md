@@ -7,3 +7,4 @@ If the mathematical operation is nonsensical (ie, summing a vector and a scalar,
 - [ ] need to change the `__str__` of the matrix
 - [ ] make the functions in "Code constraints" ?
 - [ ] make a function called "from" ? ex00
+- [ ] for "dot function" should i change self or just return the result ?

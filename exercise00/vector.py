@@ -55,5 +55,13 @@ class Vector:
         """multiply vector by a scalar factor"""
         
         self.data = [v1 * scalar for v1 in self.data]
+        
+    def dot(self, other):
+        """Dot product of two vectors."""
+        
+        if len(self.data) != len(other.data):
+            raise ValueError("Vectors must be the same length.")
+        # self.data = sum([v1 * v2 for v1, v2 in zip(self.data, other.data)])
+        return sum([v1 * v2 for v1, v2 in zip(self.data, other.data)])
 
 

@@ -91,7 +91,7 @@ class Matrix:
         if len(self.data[0]) != len(vector.data):
             raise ValueError("Number of columns in the matrix must match the dimension of the vector.")
 
-        result_data = [0 for _ in range(len(self.data))]
+        result_data = [0 for elem in range(len(self.data))]
 
         for i in range(len(self.data)):
             for j in range(len(vector.data)):
@@ -104,7 +104,7 @@ class Matrix:
         if len(self.data[0]) != len(other.data):
             raise ValueError("Number of columns in the first matrix must match the number of rows in the second matrix.")
 
-        result_data = [[0 for _ in range(len(other.data[0]))] for _ in range(len(self.data))]
+        result_data = [[0 for elem in range(len(other.data[0]))] for elem in range(len(self.data))]
 
         for i in range(len(self.data)):
             for j in range(len(other.data[0])):
@@ -112,3 +112,12 @@ class Matrix:
                     result_data[i][j] += self.data[i][k] * other.data[k][j]
 
         return Matrix(result_data)
+
+    def trace(self):
+        """compute the trace of a matrix, i.e. the sum of the diagonal elements."""
+        if len(self.data) != len(self.data[0]):
+            raise ValueError("The self.data must be square to compute its trace.")
+
+        trace_value = sum(self.data[i][i] for i in range(len(self.data)))
+
+        return trace_value

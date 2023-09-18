@@ -36,6 +36,20 @@ class Vector:
         self.sub(other)
         return self
     
+    def __getitem__(self, key):
+        """Is used to get the value of the key"""
+        if 0 <= key < len(self.data):
+            return self.data[key]
+        else:
+            raise IndexError("Index out of range")
+    
+    def __setitem__(self, key, value):
+        """Is used to set the value of the key"""
+        if 0 <= key < len(self.data):
+            self.data[key] = value
+        else:
+            raise IndexError("Index out of range")
+    
     def add(self, other):
         """Add two vectors together."""
         

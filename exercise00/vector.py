@@ -1,3 +1,4 @@
+import math
 
 # ! ------------------------------------------------------------VECTOR-----------------------------------------------------------------------------
 
@@ -63,5 +64,14 @@ class Vector:
             raise ValueError("Vectors must be the same length.")
         # self.data = sum([v1 * v2 for v1, v2 in zip(self.data, other.data)])
         return sum([v1 * v2 for v1, v2 in zip(self.data, other.data)])
+    
+    def norm_1(self):
+        return sum(abs(x) for x in self.data)
+
+    def norm(self):
+        return math.sqrt(sum(x**2 for x in self.data))
+
+    def norm_inf(self):
+        return max(abs(x) for x in self.data)
 
 

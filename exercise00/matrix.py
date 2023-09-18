@@ -1,3 +1,4 @@
+from vector import Vector
 
 # ! ------------------------------------------------------------MATRIX-----------------------------------------------------------------------------
 
@@ -84,3 +85,30 @@ class Matrix:
             # iterate through columns
             for column in range(len(self.data[0])):
                 self.data[row][column] = self.data[row][column] * scalar
+
+    def mul_vec(self, vector):
+        """Multiply the matrix by a vector."""
+        if len(self.data[0]) != len(vector.data):
+            raise ValueError("Number of columns in the matrix must match the dimension of the vector.")
+
+        result_data = [0 for _ in range(len(self.data))]
+
+        for i in range(len(self.data)):
+            for j in range(len(vector.data)):
+                result_data[i] += self.data[i][j] * vector.data[j]
+
+        return Vector(result_data)
+
+    def mul_mat(self, other):
+        """Multiply the matrix by another matrix."""
+        if len(self.data[0]) != len(other.data):
+            raise ValueError("Number of columns in the first matrix must match the number of rows in the second matrix.")
+
+        result_data = [[0 for _ in range(len(other.data[0]))] for _ in range(len(self.data))]
+
+        for i in range(len(self.data)):
+            for j in range(len(other.data[0])):
+                for k in range(len(other.data)):
+                    result_data[i][j] += self.data[i][k] * other.data[k][j]
+
+        return Matrix(result_data)

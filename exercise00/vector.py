@@ -15,6 +15,26 @@ class Vector:
         """Is used to iterate over the data"""
         return iter(self.data)
     
+    def __mul__(self, scalar):
+        if isinstance(scalar, (int, float)):
+            result_data = [x * scalar for x in self.data]
+            result = Vector(result_data)
+            return result
+        else:
+            raise ValueError("Unsupported operand type for multiplication")
+
+    def __rmul__(self, scalar):
+        # This handles the case where a scalar is on the left side of *
+        return self * scalar
+    
+    def __add__(self, other):
+        self.add(other)
+        return self
+    
+    def __sub__(self, other):
+        self.sub(other)
+        return self
+    
     def add(self, other):
         """Add two vectors together."""
         

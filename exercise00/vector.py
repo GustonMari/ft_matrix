@@ -11,6 +11,10 @@ class Vector:
             Don't forget to cast into string"""
         return str(self.data)
     
+    def __iter__(self):
+        """Is used to iterate over the data"""
+        return iter(self.data)
+    
     def add(self, other):
         """Add two vectors together."""
         

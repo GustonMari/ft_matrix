@@ -1,4 +1,8 @@
-def linear_combination(coefficients, vectors):
+import sys
+sys.path.append('../exercise00/')
+from vector import Vector
+
+def linear_combination(vectors, coefficients) -> Vector:
     if len(coefficients) != len(vectors):
         raise ValueError("Number of coefficients must match the number of vectors")
     

@@ -121,3 +121,13 @@ class Matrix:
         trace_value = sum(self.data[i][i] for i in range(len(self.data)))
 
         return trace_value
+    
+    def transpose(self):
+        """compute the transpose of a matrix."""
+        result_data = [[0 for elem in range(len(self.data))] for elem in range(len(self.data[0]))]
+
+        for i in range(len(self.data)):
+            for j in range(len(self.data[0])):
+                result_data[j][i] = self.data[i][j]
+
+        return Matrix(result_data)

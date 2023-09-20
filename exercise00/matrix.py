@@ -186,17 +186,51 @@ class Matrix:
             if actual_col >= column:
                 return mtx
             i = actual_row
+            # finds a non-zero element in the current column.
+            # This is necessary to locate a pivot element (the first non-zero element) for row operations.
             while mtx[i][actual_col] == 0:
                 i += 1
                 if i == row:
+                    # find the next row with a non-zero element in the current column.
                     i = actual_row
                     actual_col += 1
+                    # we've processed all columns, so we're done
                     if column == actual_col:
                         return mtx
             mtx = self._swap_rows(mtx, i, actual_row)
             # div is assigned the value of the pivot, the row is divided by the div to make the pivot element equal to 1
+            # It's a crucial step in achieving the row echelon form.
             div = mtx[actual_row][actual_col]
             mtx[actual_row] = [0. if elem / div == -0 else elem / div for elem in mtx[actual_row]]
             mtx = self._row_substraction(mtx, actual_row, actual_col)
             actual_col += 1
         return mtx
+
+    # is used in Laplace's formula, it permit to create a smaller matrix from the original matrix
+    def minor(self, row, col):
+        """
+        Compute the minor of the matrix by removing the specified row and column.
+        """
+        return Matrix([[self.data[i][j] for j in range(len(self.data[0])) if j != col] for i in range(len(self.data)) if i != row])
+
+    def determinant(self):
+        """
+        Compute the determinant of the matrix.
+        """
+        rows, cols = len(self.data), len(self.data[0])
+
+        if rows != cols:
+            raise ValueError("The matrix is not square.")
+        
+        # for matrix 1x1
+        if rows == 1:
+            return self.data[0][0]
+        # for matrix 2x2
+        elif rows == 2:
+            return self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+        # for matrix 3x3 and more using the Laplace formula using the recursive method
+        else:
+            det = 0
+            for col in range(cols):
+                det += ((-1) ** col) * self.data[0][col] * self.minor(0, col).determinant()
+            return det

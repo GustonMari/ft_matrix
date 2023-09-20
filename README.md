@@ -8,3 +8,5 @@ If the mathematical operation is nonsensical (ie, summing a vector and a scalar,
 - [ ] make the functions in "Code constraints" ?
 - [ ] make a function called "from" ? ex00
 - [ ] for "dot function" should i change self or just return the result ?
+
+![Row Echelon](https://saturncloud.io/blog/reducing-a-matrix-to-row-echelon-form-using-numpy-a-comprehensive-guide/)

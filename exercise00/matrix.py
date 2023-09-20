@@ -43,6 +43,12 @@ class Matrix:
     def __sub__(self, other):
         self.sub(other)
         return self
+    
+    def __getitem__(self, index):
+        return self.data[index]
+    
+    def __setitem__(self, index, value):
+        self.data[index] = value
 
     # ? PRIVATE METHODS
     
@@ -121,7 +127,7 @@ class Matrix:
         trace_value = sum(self.data[i][i] for i in range(len(self.data)))
 
         return trace_value
-    
+
     def transpose(self):
         """compute the transpose of a matrix."""
         result_data = [[0 for elem in range(len(self.data))] for elem in range(len(self.data[0]))]
@@ -131,3 +137,66 @@ class Matrix:
                 result_data[j][i] = self.data[i][j]
 
         return Matrix(result_data)
+
+
+
+# ! ------------------------------------------------------------ROW-----------------------------------------------------------------------------
+    def find_pivot(self, row: int, column: int):
+        zero = 0  # Default value for K
+        max_val = 0
+        max_row = row
+
+        for row_index in range(row, len(self.data)):
+            point = abs(self[row_index][column])
+
+            if self[row_index][column] != zero and point > max_val:
+                max_val = point
+                max_row = row_index
+
+        return (self[max_row][column], max_row)
+
+    def _swap_rows(self, mtx, row1, row2):
+        temp = mtx[row1]
+        mtx[row1] = mtx[row2]
+        mtx[row2] = temp
+        return mtx
+
+    def _row_substraction(self, mtx, actual_row, actual_col):
+        for i in range(len(mtx)):
+            if i != actual_row:
+                # pivot is the first non-zero element in the row
+                pivot = mtx[i][actual_col]
+                # row substraction by a multiple of the pivot row + if the result is -0, it is converted to 0
+                mtx[i] = [0. if elem - pivot * elem2 == -0 else elem - pivot * elem2 for elem, elem2 in zip(mtx[i], mtx[actual_row])]
+        return mtx
+
+    # * https://www.auto-math.be/public/8/module/16/theorie/65
+    # * https://bouquinpython.readthedocs.io/fr/latest/matrices.html
+    # * https://www.delftstack.com/fr/howto/python/gaussian-elimination-using-pivoting/
+    # * http://desaintar.free.fr/python/cours/pivot.pdf
+    def row_echelon(self):
+        """Create a row echelon form of the matrix."""
+        mtx = self.data
+        row = len(mtx)
+        column = len(mtx[0])
+        actual_col = 0
+        
+        for actual_row in range(row):
+            # row echelon form is completed
+            if actual_col >= column:
+                return mtx
+            i = actual_row
+            while mtx[i][actual_col] == 0:
+                i += 1
+                if i == row:
+                    i = actual_row
+                    actual_col += 1
+                    if column == actual_col:
+                        return mtx
+            mtx = self._swap_rows(mtx, i, actual_row)
+            # div is assigned the value of the pivot, the row is divided by the div to make the pivot element equal to 1
+            div = mtx[actual_row][actual_col]
+            mtx[actual_row] = [0. if elem / div == -0 else elem / div for elem in mtx[actual_row]]
+            mtx = self._row_substraction(mtx, actual_row, actual_col)
+            actual_col += 1
+        return mtx

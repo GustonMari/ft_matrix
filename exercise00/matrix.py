@@ -20,6 +20,11 @@ class Matrix:
         """
         Element-wise multiplication of two matrices.
         """
+        # if other is a scalar
+        if not isinstance(other, Matrix):
+            self.scl(other)
+            return Matrix(self.data)
+        # if other is a matrix
         if len(self.data) != len(other.data) or len(self.data[0]) != len(other.data[0]):
             raise ValueError("Matrices must have the same dimensions for element-wise multiplication.")
 
@@ -90,7 +95,11 @@ class Matrix:
         for row in range(len(self.data)):
             # iterate through columns
             for column in range(len(self.data[0])):
-                self.data[row][column] = self.data[row][column] * scalar
+                # if -0.0, it is converted to 0.0
+                if self.data[row][column] * scalar == -0.0:
+                    self.data[row][column] = 0.0
+                else:
+                    self.data[row][column] *= scalar
 
     def mul_vec(self, vector):
         """Multiply the matrix by a vector."""
@@ -234,3 +243,44 @@ class Matrix:
             for col in range(cols):
                 det += ((-1) ** col) * self.data[0][col] * self.minor(0, col).determinant()
             return det
+    
+    def _transpose(self):
+        """compute the transpose of a matrix."""
+        if len(self.data) == 1 and len(self.data[0]) == 1:
+            return Matrix([[self.data[0][0]]])
+
+        result_data = [[0 for elem in range(len(self.data))] for elem in range(len(self.data[0]))]
+
+        for i in range(len(self.data)):
+            for j in range(len(self.data[0])):
+                result_data[j][i] = self.data[i][j]
+
+        return Matrix(result_data)
+
+    def inverse(self):
+        """
+        Compute the inverse of the matrix.
+        """
+        rows, cols = len(self.data), len(self.data[0])
+
+        if rows != cols:
+            raise ValueError("The matrix is not square.")
+
+        det = self.determinant()
+
+        if det == 0:
+            raise ValueError("The matrix is not invertible, because its determinant is 0.")
+
+        # for matrix 1x1
+        if rows == 1:
+            return Matrix([[1 / self.data[0][0]]])
+        # for matrix 2x2
+        elif rows == 2:
+            return Matrix([[self.data[1][1] / det, -self.data[0][1] / det], [-self.data[1][0] / det, self.data[0][0] / det]])
+        # for matrix 3x3 and more using the Laplace formula using the recursive method
+        else:
+            # [0. if elem - pivot * elem2 == -0 else elem - pivot * elem2 for elem, elem2 in zip(mtx[i], mtx[actual_row])]
+            cofactor = Matrix([[((-1) ** (i + j)) * self.minor(i, j).determinant() for j in range(cols)] for i in range(rows)])
+            adjugate = cofactor._transpose()
+            # return (1 / det) * adjugate
+            return  adjugate * (1 / det)

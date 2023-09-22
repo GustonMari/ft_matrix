@@ -40,3 +40,16 @@ Il y a six produits à calculer en prenant un terme par ligne et par colonne :
 
 [HEC: Cofactor, minor, Laplace Formula](https://www.hec.ca/cams/rubriques/Les_determinants_des_matrices.pdf)
 [Determinant](http://gilles.dubois10.free.fr/algebre_lineaire/evaldet.html)
+
+## Inverse
+
+There is 3 rules to find the inverse of a matrix:
+* must be square
+* the determinant must be different from 0
+[Inverse](https://www.youtube.com/watch?v=wOlG_fnd3v8&list=PL3WoIG-PLjSv9vFx2dg0BqzDZH_6qzF8-&index=3)
+
+## Rank
+
+[rank](https://www.nagwa.com/fr/explainers/402106373582/)
+[course](https://math.univ-cotedazur.fr/~walter/L1_Info/Cours_rang.pdf)
+Le rang d'une matrice échelonnée, réduite ou non, est le nombre de lignes possédant un pivot (non nul). C'est également le rang de la matrice initiale, les opérations de réduction ci-dessus conservant chacune le rang.

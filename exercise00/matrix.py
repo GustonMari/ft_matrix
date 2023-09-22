@@ -284,3 +284,24 @@ class Matrix:
             adjugate = cofactor._transpose()
             # return (1 / det) * adjugate
             return  adjugate * (1 / det)
+    
+    def rank(self):
+        """
+        Compute the rank of the matrix.
+        """
+        row = len(self.data)
+        col = len(self.data[0])
+        size = 0
+        # get the max size of the minor matrix
+        if row <= col:
+            size = row
+        else:
+            size = col
+        mtx = self.row_echelon()
+        rank = 0
+        # check number of pivot that are not equal to 0
+        for i in range(size):
+            if mtx[i][i] != 0:
+                rank += 1
+        return rank
+        

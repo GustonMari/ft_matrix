@@ -1,5 +1,16 @@
 # ft_matrix
 
+It is the study of vector spaces, which consist of objects called vectors. Tranformations
+of vectors, called linear maps, are generally represented as objects called "matrices" in
+the most usual (finite-dimensional) case. There also exist other, more complex, kinds
+of vector spaces: like real or complex polynomials, and function spaces. Linear algebra
+allows us to study these diverse subjects within a unifying framework. This makes the
+more complicated cases easier to understand, since their properties are generally the same
+as the simple cases, and so you can use the simple cases to mentally visualize what would
+happen in the complicated ones. For this reason, we will concentrate on the fundamental
+case of finite-dimensional vectors and matrices, with an emphasis on 2D and 3D, which
+can easily be visualized.
+
 If the mathematical operation is nonsensical (ie, summing a vector and a scalar, or vectors of different sizes), the result is undefined.
 ### Should i put an exception or nothing ?
 
@@ -39,6 +50,7 @@ Il y a six produits à calculer en prenant un terme par ligne et par colonne :
 ![img](utils/Screenshot%202023-09-20%20at%2015.17.13.png)
 
 [HEC: Cofactor, minor, Laplace Formula](https://www.hec.ca/cams/rubriques/Les_determinants_des_matrices.pdf)
+
 [Determinant](http://gilles.dubois10.free.fr/algebre_lineaire/evaldet.html)
 
 ## Inverse
@@ -46,10 +58,13 @@ Il y a six produits à calculer en prenant un terme par ligne et par colonne :
 There is 3 rules to find the inverse of a matrix:
 * must be square
 * the determinant must be different from 0
+
 [Inverse](https://www.youtube.com/watch?v=wOlG_fnd3v8&list=PL3WoIG-PLjSv9vFx2dg0BqzDZH_6qzF8-&index=3)
 
 ## Rank
 
 [rank](https://www.nagwa.com/fr/explainers/402106373582/)
+
 [course](https://math.univ-cotedazur.fr/~walter/L1_Info/Cours_rang.pdf)
+
 Le rang d'une matrice échelonnée, réduite ou non, est le nombre de lignes possédant un pivot (non nul). C'est également le rang de la matrice initiale, les opérations de réduction ci-dessus conservant chacune le rang.

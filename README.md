@@ -15,7 +15,7 @@ If the mathematical operation is nonsensical (ie, summing a vector and a scalar,
 ### Should i put an exception or nothing ?
 
 ### TODO:
-- [ ] need to change the `__str__` of the matrix
+- exercise 04 is it ok if there is a different format for the print ?
 - [ ] make the functions in "Code constraints" ?
 - [ ] make a function called "from" ? ex00
 - [ ] for "dot function" should i change self or just return the result ?

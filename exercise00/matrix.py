@@ -10,7 +10,7 @@ class Matrix:
         self.data = data
 
     def __str__(self):
-        x = '\n'.join([''.join(['{:4}'.format(item) for item in row]) for row in self.data])
+        x = '\n'.join([' '.join(['{:1}'.format(item) for item in row]) for row in self.data])
         return x
 
     def __iter__(self):

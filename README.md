@@ -20,6 +20,68 @@ If the mathematical operation is nonsensical (ie, summing a vector and a scalar,
 - [ ] make a function called "from" ? ex00
 - [ ] for "dot function" should i change self or just return the result ?
 
+# 0. Multiply
+
+[Source](https://www.mathsisfun.com/algebra/matrix-multiplying.html)
+
+* The number of columns of the 1st matrix must equal the number of rows of the 2nd matrix.
+* And the result will have the same number of rows as the 1st matrix, and the same number of columns as the 2nd matrix.
+
+![img](img/Matrix-Multiplication-Formulas-1298x649.png)
+
+# 1. Linear combination
+
+[Source](https://www.superprof.co.uk/resources/academic/maths/analytical-geometry/vectors/linear-combination-of-vectors.html)
+
+![img](img/34-15615364562318-1267.gif)
+
+# 2. Linear interpolation
+
+The linear interpolation formula is used for data forecasting, data prediction, mathematical and scientific applications and, market research, etc.
+
+[Source](https://www.toppr.com/guides/maths-formulas/linear-interpolation-formula/)
+
+# 3. Dot product
+
+Product of two vectors
+
+[Source](https://www.mathsisfun.com/algebra/vectors-dot-product.html)
+
+# 4. Norm
+
+## A. Taxicab norm or Manhattan norm
+[Source](https://fr.wikipedia.org/wiki/Distance_de_Manhattan)
+## B. Euclidean norm
+[Source](https://www.sciencedirect.com/topics/mathematics/euclidean-norm)
+## C. supremum norm
+The supremum norm, also known as the infinity norm or max norm, is a mathematical concept used to measure the "size" or "magnitude" of a mathematical object, such as a vector or a function. It is denoted as ||x||∞, where x represents the object in question.
+
+For a vector x = [x₁, x₂, ..., xn], the supremum norm is defined as:
+
+||x||∞ = max(|x₁|, |x₂|, ..., |xn|)
+
+In other words, it is the maximum absolute value of any element in the vector. It quantifies how large the largest element of the vector is, regardless of its position.
+
+# 5. Cosine
+
+Calculate Cosine with Norm
+
+# 6. Cross product
+
+[Source](https://www.mathsisfun.com/algebra/vectors-cross-product.html)
+
+# 7. Linear Transformation
+Check 0. its Product of matrix.
+
+# 8. Trace
+compute the trace of a matrix, i.e. the sum of the diagonal elements.
+
+# 9. Transpose
+
+
+
+
+
 [Row Echelon](https://saturncloud.io/blog/reducing-a-matrix-to-row-echelon-form-using-numpy-a-comprehensive-guide/)
 
 ## Row Echelon Form

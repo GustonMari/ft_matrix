@@ -83,6 +83,7 @@ class Vector:
         return sum(abs(x) for x in self.data)
 
     def norm(self):
+        # return math.sqrt(sum(x**2 for x in self.data))
         return math.sqrt(sum(x**2 for x in self.data))
 
     def norm_inf(self):

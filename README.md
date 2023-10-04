@@ -78,13 +78,11 @@ compute the trace of a matrix, i.e. the sum of the diagonal elements.
 
 # 9. Transpose
 
+![img](img/transpose-of-a-matrix-03-1624617634.png)
 
-
-
+# 10. Row Echelon Form
 
 [Row Echelon](https://saturncloud.io/blog/reducing-a-matrix-to-row-echelon-form-using-numpy-a-comprehensive-guide/)
-
-## Row Echelon Form
 
 [Theory](https://www.auto-math.be/public/8/module/16/theorie/65)
 
@@ -94,7 +92,7 @@ compute the trace of a matrix, i.e. the sum of the diagonal elements.
 
 [Using Pivot in Python](http://desaintar.free.fr/python/cours/pivot.pdf)
 
-## Determinant
+# 11. Determinant
 
 Il s'agit donc d'effectuer tous les produits possibles en prenant un élément par ligne et par colonne dans la matrice, de les multiplier tantôt par +1 tantôt par –1, et de faire la somme des n! termes ainsi obtenus. Cette affectation (+1 ou –1) fait intervenir le nombre d'inversions de la permutation, c'est-à-dire le nombre de paires parmi les termes du produit où l’élément de gauche dans la matrice est situé plus bas que l'élément de droite. Si ce nombre est impair, le produit est multiplié par –1, sinon il est multiplié par +1.
 
@@ -115,7 +113,25 @@ Il y a six produits à calculer en prenant un terme par ligne et par colonne :
 
 [Determinant](http://gilles.dubois10.free.fr/algebre_lineaire/evaldet.html)
 
-## Inverse
+The determinant of a square matrix represents several geometric and algebraic properties of the linear transformation defined by that matrix. Here are some key aspects of what the determinant describes geometrically and algebraically:
+
+**Scaling Factor**: Geometrically, the determinant represents the scaling factor of the linear transformation. It tells you how much the transformation expands or contracts volumes in the vector space. If the determinant is positive, it indicates an expansion (stretching), and if it's negative, it indicates a contraction (flipping and stretching).
+
+**Orientation**: The sign of the determinant also represents whether the linear transformation preserves or reverses the orientation of vectors in the vector space. A positive determinant preserves orientation, while a negative determinant reverses it.
+
+**Collinearity**: A determinant of zero indicates that the linear transformation collapses vectors onto a lower-dimensional subspace or line. This means that some vectors become collinear after the transformation.
+
+**Invertibility**: A matrix is invertible (i.e., has an inverse) if and only if its determinant is nonzero. In other words, if the determinant is zero, the linear transformation collapses some portion of the vector space onto a lower-dimensional subspace, making it non-invertible.
+
+**Area and Volume**: In two-dimensional space (2D), the determinant represents the area scaling factor, while in three-dimensional space (3D), it represents the volume scaling factor.
+
+**Eigenvalues**: The determinant is related to the eigenvalues of the matrix. Specifically, the product of the eigenvalues equals the determinant.
+
+**Change of Variables**: In multivariable calculus, the determinant plays a crucial role in the change of variables formula when transforming integrals from one coordinate system to another.
+
+In summary, the determinant of a matrix provides information about how the associated linear transformation affects the geometry of the vector space. It tells us about scaling, orientation, collinearity, and invertibility. It is a fundamental concept in linear algebra and has applications in various fields, including computer graphics, physics, and engineering
+
+# 12. Inverse
 
 There is 3 rules to find the inverse of a matrix:
 * must be square
@@ -123,7 +139,9 @@ There is 3 rules to find the inverse of a matrix:
 
 [Inverse](https://www.youtube.com/watch?v=wOlG_fnd3v8&list=PL3WoIG-PLjSv9vFx2dg0BqzDZH_6qzF8-&index=3)
 
-## Rank
+[Source](https://www.mathsisfun.com/algebra/matrix-inverse.html)
+
+# 13. Rank
 
 [rank](https://www.nagwa.com/fr/explainers/402106373582/)
 

@@ -1,5 +1,6 @@
-import math
-
+import sys
+sys.path.append('../utils/')
+from utils import custom_abs, custom_min, custom_max
 # ! ------------------------------------------------------------VECTOR-----------------------------------------------------------------------------
 
 class Vector:
@@ -80,13 +81,13 @@ class Vector:
         return sum([v1 * v2 for v1, v2 in zip(self.data, other.data)])
     
     def norm_1(self):
-        return sum(abs(x) for x in self.data)
+        return sum(custom_abs(x) for x in self.data)
 
     def norm(self):
         # return math.sqrt(sum(x**2 for x in self.data))
-        return math.sqrt(sum(x**2 for x in self.data))
+        return sum((custom_abs(x))**2 for x in self.data)**0.5
 
     def norm_inf(self):
-        return max(abs(x) for x in self.data)
+        return custom_max(custom_abs(x) for x in self.data)
 
 

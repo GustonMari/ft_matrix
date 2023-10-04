@@ -1,5 +1,7 @@
 from vector import Vector
-
+import sys
+sys.path.append('../utils/')
+from utils import custom_abs, custom_min, custom_max
 # ! ------------------------------------------------------------MATRIX-----------------------------------------------------------------------------
 
 class Matrix:
@@ -152,17 +154,17 @@ class Matrix:
 # ! ------------------------------------------------------------ROW-----------------------------------------------------------------------------
     def find_pivot(self, row: int, column: int):
         zero = 0  # Default value for K
-        max_val = 0
-        max_row = row
+        custom_max_val = 0
+        custom_max_row = row
 
         for row_index in range(row, len(self.data)):
-            point = abs(self[row_index][column])
+            point = custom_abs(self[row_index][column])
 
-            if self[row_index][column] != zero and point > max_val:
-                max_val = point
-                max_row = row_index
+            if self[row_index][column] != zero and point > custom_max_val:
+                custom_max_val = point
+                custom_max_row = row_index
 
-        return (self[max_row][column], max_row)
+        return (self[custom_max_row][column], custom_max_row)
 
     def _swap_rows(self, mtx, row1, row2):
         temp = mtx[row1]
@@ -181,7 +183,7 @@ class Matrix:
 
     # * https://www.auto-math.be/public/8/module/16/theorie/65
     # * https://bouquinpython.readthedocs.io/fr/latest/matrices.html
-    # * https://www.delftstack.com/fr/howto/python/gaussian-elimination-using-pivoting/
+    # * https://www.delftstack.com/fr/howto/python/gaussian-elicustom_mination-using-pivoting/
     # * http://desaintar.free.fr/python/cours/pivot.pdf
     def row_echelon(self):
         """Create a row echelon form of the matrix."""
@@ -216,15 +218,15 @@ class Matrix:
         return mtx
 
     # is used in Laplace's formula, it permit to create a smaller matrix from the original matrix
-    def minor(self, row, col):
+    def custom_minor(self, row, col):
         """
-        Compute the minor of the matrix by removing the specified row and column.
+        Compute the custom_minor of the matrix by removing the specified row and column.
         """
         return Matrix([[self.data[i][j] for j in range(len(self.data[0])) if j != col] for i in range(len(self.data)) if i != row])
 
-    def determinant(self):
+    def derterminant(self):
         """
-        Compute the determinant of the matrix.
+        Compute the derterminant of the matrix.
         """
         rows, cols = len(self.data), len(self.data[0])
 
@@ -241,7 +243,7 @@ class Matrix:
         else:
             det = 0
             for col in range(cols):
-                det += ((-1) ** col) * self.data[0][col] * self.minor(0, col).determinant()
+                det += ((-1) ** col) * self.data[0][col] * self.custom_minor(0, col).derterminant()
             return det
     
     def _transpose(self):
@@ -266,10 +268,10 @@ class Matrix:
         if rows != cols:
             raise ValueError("The matrix is not square.")
 
-        det = self.determinant()
+        det = self.derterminant()
 
         if det == 0:
-            raise ValueError("The matrix is not invertible, because its determinant is 0.")
+            raise ValueError("The matrix is not invertible, because its derterminant is 0.")
 
         # for matrix 1x1
         if rows == 1:
@@ -280,7 +282,7 @@ class Matrix:
         # for matrix 3x3 and more using the Laplace formula using the recursive method
         else:
             # [0. if elem - pivot * elem2 == -0 else elem - pivot * elem2 for elem, elem2 in zip(mtx[i], mtx[actual_row])]
-            cofactor = Matrix([[((-1) ** (i + j)) * self.minor(i, j).determinant() for j in range(cols)] for i in range(rows)])
+            cofactor = Matrix([[((-1) ** (i + j)) * self.custom_minor(i, j).derterminant() for j in range(cols)] for i in range(rows)])
             adjugate = cofactor._transpose()
             # return (1 / det) * adjugate
             return  adjugate * (1 / det)
@@ -292,7 +294,7 @@ class Matrix:
         row = len(self.data)
         col = len(self.data[0])
         size = 0
-        # get the max size of the minor matrix
+        # get the custom_max size of the custom_minor matrix
         if row <= col:
             size = row
         else:

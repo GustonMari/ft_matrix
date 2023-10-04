@@ -9,7 +9,7 @@ for ((i=0; i<=13; i++)); do
         if [ -f "$folder/main.py" ]; then
             echo "Executing main.py in folder $folder..."
             # Change directory to the folder and execute main.py
-            (cd "$folder" && python main.py)
+            (cd "$folder" && python3.10 main.py)
             echo -e "Execution in folder $folder completed.\n"
         else
             echo "main.py not found in folder $folder."

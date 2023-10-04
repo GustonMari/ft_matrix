@@ -16,20 +16,25 @@ def blue(text):
     """Print blue text."""
     print(Fore.BLUE + text + Fore.RESET)
 
-def abs(x):
-    """Return the absolute value of x."""
+def custom_abs(x):
+    """Return the custom_absolute value of x."""
     if x < 0:
         return -x
     return x
 
-def max(x, y):
-    """Return the maximum between x and y."""
-    if x > y:
-        return x
-    return y
+def custom_max(x):
+    """Return max value of x."""
+    x_list = list(x)  # Convert the generator to a list
+    if not x_list:
+        raise ValueError("Input sequence is empty")  # Handle empty sequence
+    max_value = x_list[0]
+    for i in x_list:
+        if i > max_value:
+            max_value = i
+    return max_value
 
-def min(x, y):
-    """Return the minimum between x and y."""
+def custom_min(x, y):
+    """Return the custom_minimum between x and y."""
     if x < y:
         return x
     return y
